@@ -21,6 +21,7 @@ object ProCityCt {
       .config("spark.serializer","org.apache.spark.serializer.KryoSerializer")
       .getOrCreate()
 
+    //
     val df: DataFrame = spark.read.parquet(inputPath)
     df.createTempView("log")
     val df2 = spark.sql("select provincename,cityname,count(*) ct from log group by provincename,cityname")
