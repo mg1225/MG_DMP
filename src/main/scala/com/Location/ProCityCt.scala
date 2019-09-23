@@ -26,7 +26,8 @@ object ProCityCt {
     df.createTempView("log")
     val df2 = spark.sql("select provincename,cityname,count(*) ct from log group by provincename,cityname")
 
-    //df2.write.partitionBy("provincename","cityname").parquet("H:\\ct")
+
+    //df2.write.partitionBy("provincename","cityname").json("H:\\ct_json")
 
     val load: Config = ConfigFactory.load()
     val prop = new Properties()
